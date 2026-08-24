@@ -1,0 +1,152 @@
+[  
+   { 
+    "id": "p04",
+    "name": "Panier vannerie Kotokoli",
+    "description": "Panier tressé en fibres naturelles, technique kotokoli. Léger, solide, parfait pour le marché ou la décoration d'intérieur.",
+    "price": 8900,
+    "imageUrl": "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=1200&q=80",
+    "category": "Artisanat",
+    "rating": 4.5,
+    "stock": 18
+  },
+  {
+    "id": "p05",
+    "name": "Café arabica Plateaux",
+    "description": "Café arabica cultivé sur les plateaux de Kpalimé. Torréfaction moyenne, notes chocolatées et agrumes. Sachet de 250 g.",
+    "price": 6200,
+    "imageUrl": "https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1200&q=80",
+    "category": "Alimentaire",
+    "rating": 4.6,
+    "stock": 32
+  },
+  {
+    "id": "p06",
+    "name": "Collier perles de verre",
+    "description": "Collier artisanal en perles de verre recyclé, inspiré des parures du sud-Togo. Fermoir en laiton. Pièce faite main.",
+    "price": 7500,
+    "imageUrl": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1200&q=80",
+    "category": "Mode",
+    "rating": 4.4,
+    "stock": 15
+  },
+  {
+    "id": "p07",
+    "name": "Masque traditionnel Mina",
+    "description": "Masque cérémoniel Mina sculpté à Aného. Polychromie naturelle, patine artisanale. Objet décoratif chargé d'histoire.",
+    "price": 45000,
+    "imageUrl": "https://images.unsplash.com/photo-1551913902-c79245328241?auto=format&fit=crop&w=1200&q=80",
+    "category": "Artisanat",
+    "rating": 4.9,
+    "stock": 3
+  },
+  {
+    "id": "p08",
+    "name": "Savon noir artisanal",
+    "description": "Savon noir togolais à base d'huiles végétales et de cendres de plantes. Nettoie en douceur, adapté à tous types de peaux.",
+    "price": 1800,
+    "imageUrl": "https://images.unsplash.com/photo-1600857544200-b2f666a9e2ec?auto=format&fit=crop&w=1200&q=80",
+    "category": "Beauté",
+    "rating": 4.3,
+    "stock": 60
+  },
+  {
+    "id": "p09",
+    "name": "Tunique batik femme",
+    "description": "Tunique en coton batik, teinture à la cire réalisée à Lomé. Coupe ample, respirante, tailles S à XL.",
+    "price": 16500,
+    "imageUrl": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=1200&q=80",
+    "category": "Mode",
+    "rating": 4.6,
+    "stock": 12
+  },
+  {
+    "id": "p10",
+    "name": "Piment séché Adogbè",
+    "description": "Piment local séché au soleil, goût fumé et piquant. Idéal pour sauces et marinades. Sachet de 100 g.",
+    "price": 1500,
+    "imageUrl": "https://images.unsplash.com/photo-1583119022894-2720bd32bc4f?auto=format&fit=crop&w=1200&q=80",
+    "category": "Alimentaire",
+    "rating": 4.2,
+    "stock": 80
+  },
+  {
+    "id": "p11",
+    "name": "Lampe calebasse sculptée",
+    "description": "Lampe d'ambiance taillée dans une calebasse séchée. Motifs ajourés projetant des ombres chaudes. Ampoule LED fournie.",
+    "price": 19500,
+    "imageUrl": "https://images.unsplash.com/photo-1507473883500-5ea21dba4f2d?auto=format&fit=crop&w=1200&q=80",
+    "category": "Décoration",
+    "rating": 4.7,
+    "stock": 9
+  },
+  {
+    "id": "p12",
+    "name": "Coussin wax 45×45",
+    "description": "Housse de coussin en wax togolais, doublure coton. Fermeture éclair discrète. Vendue sans garnissage.",
+    "price": 5400,
+    "imageUrl": "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=1200&q=80",
+    "category": "Décoration",
+    "rating": 4.4,
+    "stock": 22
+  },
+  {
+    "id": "p13",
+    "name": "Miel de Tsévié",
+    "description": "Miel toutes fleurs récolté autour de Tsévié. Texture onctueuse, arômes floraux. Pot en verre de 250 g.",
+    "price": 3800,
+    "imageUrl": "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=1200&q=80",
+    "category": "Alimentaire",
+    "rating": 4.8,
+    "stock": 28
+  },
+  {
+    "id": "p14",
+    "name": "Huile de coco vierge",
+    "description": "Huile de coco pressée à froid sur le littoral. Usage cosmétique et culinaire. Flacon de 200 ml.",
+    "price": 3200,
+    "imageUrl": "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=1200&q=80",
+    "category": "Beauté",
+    "rating": 4.5,
+    "stock": 35
+  },
+  {
+    "id": "p15",
+    "name": "Djembé artisanat Lomé",
+    "description": "Djembé en bois massif et peau de chèvre tendue à la corde. Fabriqué dans un atelier de Lomé. Hauteur 40 cm.",
+    "price": 52000,
+    "imageUrl": "https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?auto=format&fit=crop&w=1200&q=80",
+    "category": "Artisanat",
+    "rating": 4.9,
+    "stock": 4
+  },
+  {
+    "id": "p16",
+    "name": "Sandales cuir tanné",
+    "description": "Sandales en cuir tanné végétal, semelle cousue main. Confort marché et ville. Tailles 36 à 45.",
+    "price": 11200,
+    "imageUrl": "https://images.unsplash.com/photo-1603808033192-082d6919d3e1?auto=format&fit=crop&w=1200&q=80",
+    "category": "Mode",
+    "rating": 4.3,
+    "stock": 16
+  },
+  {
+    "id": "p17",
+    "name": "Nappe wax 150×150",
+    "description": "Nappe en wax coton, ourlets renforcés. Motifs géométriques rouge et or. Entretien lavage délicat.",
+    "price": 9800,
+    "imageUrl": "https://images.unsplash.com/photo-1617806118233-18e1de3d13ea?auto=format&fit=crop&w=1200&q=80",
+    "category": "Décoration",
+    "rating": 4.1,
+    "stock": 11
+  },
+  {
+    "id": "p18",
+    "name": "Farine d'igname",
+    "description": "Farine d'igname séchée et moulue, base du foufou. Sachet de 1 kg, sans additifs. Produit des coopératives de la Kara.",
+    "price": 2700,
+    "imageUrl": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=1200&q=80",
+    "category": "Alimentaire",
+    "rating": 4.0,
+    "stock": 50
+  }
+]
