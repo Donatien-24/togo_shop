@@ -4,6 +4,7 @@ import '../core/utils/formatters.dart';
 import '../models/cart_item.dart';
 import '../providers/cart_provider.dart';
 import 'price_tag.dart';
+
 class CartItemTile extends ConsumerWidget {
   const CartItemTile({super.key, required this.item});
   final CartItem item;
@@ -47,6 +48,7 @@ class CartItemTile extends ConsumerWidget {
                   Row(
                     children: [
                       IconButton.filledTonal(
+                        tooltip: 'Diminuer la quantite de ${product.name}',
                         visualDensity: VisualDensity.compact,
                         onPressed: () => ref
                             .read(cartProvider.notifier)
@@ -61,12 +63,13 @@ class CartItemTile extends ConsumerWidget {
                         ),
                       ),
                       IconButton.filledTonal(
+                        tooltip: 'Augmenter la quantite de ${product.name}',
                         visualDensity: VisualDensity.compact,
                         onPressed: item.quantity >= product.stock
                             ? null
                             : () => ref
-                                .read(cartProvider.notifier)
-                                .increment(product.id),
+                                  .read(cartProvider.notifier)
+                                  .increment(product.id),
                         icon: const Icon(Icons.add),
                       ),
                       const Spacer(),

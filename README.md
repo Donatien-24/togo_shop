@@ -25,53 +25,81 @@ samples, guidance on mobile development, and a full API reference.
 - Profil utilisateur simulé + historique de commandes
 - Thème Material 3 (clair / sombre / système) persisté
 - Interface responsive (mobile et tablette)
-## Stack
-| Outil | Usage |
-| --- | --- |
-| Flutter 3 | UI Material 3 |
-| flutter_riverpod | État de l’application |
-| shared_preferences | Favoris et préférences |
-Aucune autre dépendance métier n’est requise.
+# TogoShop
+
+[![Flutter CI](https://github.com/OWNER/REPOSITORY/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/REPOSITORY/actions/workflows/ci.yml)
+
+Application e-commerce Flutter dédiée aux produits artisanaux et locaux du Togo.
+
+## Fonctionnalités
+
+- Catalogue avec recherche, catégories, tri, notes et stock.
+- Détail produit, favoris persistés et panier avec contrôle du stock.
+- Profil, historique simulé et thèmes système, clair ou sombre.
+- Interface responsive sur Android, iOS, Web, Windows, macOS et Linux.
+- Internationalisation française et anglaise.
+- Images réseau mises en cache avec états de chargement et d’erreur.
+
 ## Architecture
+
+L’application conserve une architecture par couches: `models` décrit les données, `repositories` charge les produits, `providers` orchestre l’état Riverpod, et `screens`/`widgets` composent l’interface. Le détail complet est disponible dans [docs/architecture.md](docs/architecture.md).
+
 ```text
-lib/
-├── main.dart
-├── core/           constants, thème, utilitaires
-├── models/         Product, CartItem, UserProfile, ProductFilter
-├── repositories/   ProductRepository (JSON local)
-├── providers/      Riverpod
-├── screens/        Catalogue, détail, panier, favoris, profil
-├── widgets/        Cards, loading, erreurs, tuiles panier
-└── data/           copie de products.json
-assets/data/products.json   source chargée au runtime
+assets/data/products.json -> ProductRepository -> productsProvider
+									  -> filteredProductsProvider -> CatalogGrid
+SharedPreferences <-> providers (favoris, profil, thème, locale)
 ```
-## Providers Riverpod
-| Provider | Type | Rôle |
-| --- | --- | --- |
-| `productRepositoryProvider` | `Provider` | Accès au dépôt produits |
-| `productsProvider` | `FutureProvider<List<Product>>` | Chargement asynchrone |
-| `cartProvider` | `StateNotifierProvider` | Panier |
-| `favoritesProvider` | `StateNotifierProvider` | Favoris + SharedPreferences |
-| `filterProvider` | `StateProvider` | Recherche, catégorie, tri |
-| `profileProvider` | `StateNotifierProvider` | Profil mock + nom persisté |
-| `themeModeProvider` | `StateNotifierProvider` | Thème persisté |
-| `selectedProductIdProvider` | `StateProvider` | Produit transmis à l’écran détail |
-| `filteredProductsProvider` | `Provider<AsyncValue<…>>` | Catalogue dérivé |
-Le détail produit **ne reçoit pas** le modèle uniquement via le constructeur : l’id est posé dans `selectedProductIdProvider`, puis `selectedProductProvider` expose un `AsyncValue<Product?>`.
-## Lancer le projet
-Prérequis : [Flutter SDK](https://docs.flutter.dev/get-started/install) (SDK Dart ^3.12).
+
+## Prérequis et installation
+
+- Flutter stable avec Dart SDK `^3.12.2`.
+- Android Studio/Xcode ou les toolchains desktop selon la cible.
+
 ```bash
-git clone <url-du-depot>
-cd TogoShop
 flutter pub get
 flutter run
 ```
-Cibles générées : Android, iOS, Web, Windows.
-Les images du catalogue sont chargées depuis Unsplash : une connexion Internet est nécessaire.
-## Tests
+
+Les URL d’images de démonstration nécessitent une connexion réseau. Les données produit restent locales.
+
+## Qualité et tests
+
 ```bash
-flutter test
+dart format --output=none --set-exit-if-changed lib test integration_test
 flutter analyze
+flutter test
+flutter test integration_test/app_test.dart -d <android-device>
 ```
+
+La suite contient 19 tests unitaires et 5 tests widgets. Les deux tests d’intégration s’exécutent sur émulateur Android dans GitHub Actions. Flutter ne supporte pas l’exécution de `integration_test` avec `-d chrome` dans l’environnement actuel.
+
+## Builds
+
+```bash
+flutter build apk --release
+flutter build web --release
+flutter build windows --release
+flutter build macos --release
+flutter build ios --release --no-codesign
+flutter build linux --release
+```
+
+Les builds Apple nécessitent macOS/Xcode. Une IPA signée nécessite des certificats Apple et n’est pas stockée dans le dépôt.
+
+## Captures
+
+Les captures du build Web sont disponibles dans [docs/screenshots/](docs/screenshots/):
+
+| Catalogue | Détail produit |
+| --- | --- |
+| ![Catalogue TogoShop](docs/screenshots/catalog.png) | ![Détail produit TogoShop](docs/screenshots/product-detail.png) |
+
+| Panier | Profil et langue |
+| --- | --- |
+| ![Panier TogoShop](docs/screenshots/cart.png) | ![Profil TogoShop](docs/screenshots/profile.png) |
+
+Voir [docs/screenshots/README.md](docs/screenshots/README.md) pour les consignes de mise à jour.
+
 ## Licence
-Projet de démonstration pédagogique. Libre d’usage pour un dépôt GitHub public.
+
+Projet de démonstration pédagogique, libre d’usage pour un dépôt GitHub public.

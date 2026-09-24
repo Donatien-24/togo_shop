@@ -14,6 +14,7 @@ import '../providers/products_provider.dart';
 import '../widgets/loading_widget.dart';
 import '../widgets/error_widget.dart';
 import '../widgets/price_tag.dart';
+import '../widgets/cached_product_image.dart';
 
 class ProductDetailScreen extends ConsumerWidget {
   const ProductDetailScreen({super.key});
@@ -28,17 +29,13 @@ class ProductDetailScreen extends ConsumerWidget {
       ),
       error: (error, _) => Scaffold(
         appBar: AppBar(),
-        body: AppErrorWidget(
-          message: 'Produit introuvable.\n$error',
-        ),
+        body: AppErrorWidget(message: 'Produit introuvable.\n$error'),
       ),
       data: (product) {
         if (product == null) {
           return Scaffold(
             appBar: AppBar(),
-            body: const AppErrorWidget(
-              message: 'Aucun produit sélectionné.',
-            ),
+            body: const AppErrorWidget(message: 'Aucun produit sélectionné.'),
           );
         }
 
@@ -47,7 +44,7 @@ class ProductDetailScreen extends ConsumerWidget {
     );
   }
 }
-  
+
 class _ProductDetailBody extends ConsumerWidget {
   const _ProductDetailBody({required this.product});
   final Product product;
@@ -59,14 +56,9 @@ class _ProductDetailBody extends ConsumerWidget {
       tag: 'product-image-${product.id}',
       child: AspectRatio(
         aspectRatio: tablet ? 1 : 16 / 11,
-        child: Image.network(
-          product.imageUrl,
-          fit: BoxFit.cover,
-          width: double.infinity,
-          errorBuilder: (_, _, _) => const ColoredBox(
-            color: Color(0x11000000),
-            child: Center(child: Icon(Icons.image_not_supported_outlined, size: 48)),
-          ),
+        child: CachedProductImage(
+          imageUrl: product.imageUrl,
+          cacheWidth: tablet ? 900 : 720,
         ),
       ),
     );
@@ -105,12 +97,11 @@ class _ProductDetailBody extends ConsumerWidget {
                 Expanded(child: SingleChildScrollView(child: info)),
               ],
             )
-          : ListView(
-              children: [image, info],
-            ),
+          : ListView(children: [image, info]),
     );
   }
 }
+
 class _ProductInfo extends StatelessWidget {
   const _ProductInfo({
     required this.product,
@@ -131,9 +122,9 @@ class _ProductInfo extends StatelessWidget {
         children: [
           Text(
             product.name,
-            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+            style: Theme.of(
+              context,
+            ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
           Wrap(

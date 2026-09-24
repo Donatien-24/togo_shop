@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../core/l10n/locale_provider.dart';
 import '../core/constants/app_strings.dart';
 import '../core/utils/formatters.dart';
+import '../l10n/app_localizations.dart';
 import '../models/user_profile.dart';
 import '../providers/profile_provider.dart';
+
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final profile = ref.watch(profileProvider);
     final themeMode = ref.watch(themeModeProvider);
+    final strings = AppLocalizations.of(context);
+    final languageCode =
+        ref.watch(localeProvider) ??
+        Localizations.localeOf(context).languageCode;
     return Scaffold(
-      appBar: AppBar(title: const Text(AppStrings.profileTitle)),
+      appBar: AppBar(title: Text(strings.profile)),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
@@ -64,25 +71,49 @@ class ProfileScreen extends ConsumerWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            'Apparence',
+            strings.language,
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          const SizedBox(height: 8),
+          SegmentedButton<String>(
+            segments: [
+              ButtonSegment(
+                value: 'fr',
+                label: Text(strings.french),
+                icon: const Icon(Icons.translate),
+              ),
+              ButtonSegment(
+                value: 'en',
+                label: Text(strings.english),
+                icon: const Icon(Icons.translate),
+              ),
+            ],
+            selected: {languageCode == 'fr' ? 'fr' : 'en'},
+            onSelectionChanged: (value) {
+              ref.read(localeProvider.notifier).setLocale(value.first);
+            },
+          ),
+          const SizedBox(height: 24),
+          Text(
+            strings.appearance,
             style: Theme.of(context).textTheme.titleMedium,
           ),
           const SizedBox(height: 8),
           SegmentedButton<ThemeMode>(
-            segments: const [
+            segments: [
               ButtonSegment(
                 value: ThemeMode.system,
-                label: Text('Système'),
+                label: Text(strings.system),
                 icon: Icon(Icons.brightness_auto),
               ),
               ButtonSegment(
                 value: ThemeMode.light,
-                label: Text('Clair'),
+                label: Text(strings.light),
                 icon: Icon(Icons.light_mode),
               ),
               ButtonSegment(
                 value: ThemeMode.dark,
-                label: Text('Sombre'),
+                label: Text(strings.dark),
                 icon: Icon(Icons.dark_mode),
               ),
             ],
@@ -102,6 +133,7 @@ class ProfileScreen extends ConsumerWidget {
       ),
     );
   }
+
   Future<void> _editName(
     BuildContext context,
     WidgetRef ref,
@@ -135,12 +167,13 @@ class ProfileScreen extends ConsumerWidget {
     if (result != null) {
       await ref.read(profileProvider.notifier).updateDisplayName(result);
       if (!context.mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Préférence enregistrée')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Préférence enregistrée')));
     }
   }
 }
+
 class _OrderTile extends StatelessWidget {
   const _OrderTile({required this.order});
   final OrderHistoryItem order;

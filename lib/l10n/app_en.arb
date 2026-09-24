@@ -1,0 +1,20 @@
+{
+  "@@locale": "en",
+  "appName": "TogoShop",
+  "catalog": "Catalog",
+  "favorites": "Favorites",
+  "cart": "Cart",
+  "profile": "Profile",
+  "language": "Language",
+  "french": "French",
+  "english": "English",
+  "appearance": "Appearance",
+  "system": "System",
+  "light": "Light",
+  "dark": "Dark",
+  "orders": "Order history",
+  "editName": "Edit name",
+  "email": "Email",
+  "phone": "Phone",
+  "address": "Address"
+}
